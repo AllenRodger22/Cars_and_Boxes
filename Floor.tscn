@@ -11,23 +11,23 @@ margin_bottom = 608.0
 color = Color( 0.184314, 0.184314, 0.184314, 1 )
 
 [node name="Node2D" parent="." instance=ExtResource( 2 )]
+modulate = Color( 1, 0.027451, 1, 1 )
 position = Vector2( 2, -20 )
 scale = Vector2( 1, 27.2 )
 
-[node name="Node2D2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 991, -87 )
-scale = Vector2( 1, 27.2 )
-
 [node name="Node2D3" parent="." instance=ExtResource( 2 )]
+modulate = Color( 1, 0.027451, 1, 1 )
 position = Vector2( 991, -87 )
 scale = Vector2( 1, 27.2 )
 
 [node name="Node2D4" parent="." instance=ExtResource( 2 )]
+modulate = Color( 1, 0.027451, 1, 1 )
 position = Vector2( 1096, -0.999999 )
 rotation = 1.57132
 scale = Vector2( 1, 37.4793 )
 
 [node name="Node2D5" parent="." instance=ExtResource( 2 )]
+modulate = Color( 1, 0.027451, 1, 1 )
 position = Vector2( 1119, 576 )
 rotation = 1.57132
 scale = Vector2( 1, 37.4793 )
