@@ -49,19 +49,8 @@ position = Vector2( 64, 64 )
 [node name="Box" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( 192, 192 )
 
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-show_behind_parent = true
-margin_left = 32.0
-margin_top = 32.0
-margin_right = 992.0
-margin_bottom = 576.0
-color = Color( 0.184314, 0.184314, 0.184314, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="TileMap" type="TileMap" parent="."]
+z_index = -1
 tile_set = SubResource( 2 )
 cell_size = Vector2( 32, 32 )
 cell_y_sort = true

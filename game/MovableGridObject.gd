@@ -11,6 +11,7 @@ const VECTOR := {
 }
 
 onready var raycast = get_node("RayCast2D")
+onready var movetween = get_node("Tween")
 
 func move(dir):
 	raycast.cast_to = VECTOR[dir] * tile_size
@@ -18,11 +19,15 @@ func move(dir):
 	if raycast.is_colliding():
 		if raycast.get_collider().has_method("move"):
 			if raycast.get_collider().move(dir):
-				position += VECTOR[dir] * tile_size
+				interpolate("position", position, position + VECTOR[dir] * tile_size)
 				return true
 			else:
 				return false
 	else:
-		position += VECTOR[dir] * tile_size
+		interpolate("position", position, position + VECTOR[dir] * tile_size)
 		return true
+
+func interpolate(property, initial, target):
+	movetween.interpolate_property(self, property, initial, target, .08, movetween.TRANS_SINE, movetween.EASE_OUT)
+	movetween.start()
 

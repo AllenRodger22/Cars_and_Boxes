@@ -1,0 +1,4 @@
+[gd_scene format=2]
+
+[node name="Tween" type="Tween"]
+playback_process_mode = 0
