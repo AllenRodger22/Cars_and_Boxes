@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Cars & Boxes"
-run/main_scene="res://Floor.tscn"
+run/main_scene="res://game/Floor.tscn"
 
 [display]
 
