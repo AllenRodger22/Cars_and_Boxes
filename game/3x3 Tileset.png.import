@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Tileset.png-f0680a11b03e3a03daad435ef8771194.stex"
+path="res://.import/3x3 Tileset.png-c43d3794897dd172d438d18d1a83043d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/Tileset.png"
-dest_files=[ "res://.import/Tileset.png-f0680a11b03e3a03daad435ef8771194.stex" ]
+source_file="res://game/3x3 Tileset.png"
+dest_files=[ "res://.import/3x3 Tileset.png-c43d3794897dd172d438d18d1a83043d.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -31,5 +31,5 @@ process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0
