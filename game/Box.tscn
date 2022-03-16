@@ -24,9 +24,4 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2( 16, 16 )
-enabled = true
-cast_to = Vector2( 0, 32 )
-
 [node name="Tween" parent="." instance=ExtResource( 2 )]

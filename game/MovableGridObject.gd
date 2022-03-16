@@ -10,22 +10,31 @@ const VECTOR := {
 	"down": Vector2.DOWN
 }
 
-onready var raycast = get_node("RayCast2D")
 onready var movetween = get_node("Tween")
 
 func move(dir):
-	raycast.cast_to = VECTOR[dir] * tile_size
-	raycast.force_raycast_update()
-	if raycast.is_colliding():
-		if raycast.get_collider().has_method("move"):
-			if raycast.get_collider().move(dir):
+	var world = get_world_2d().direct_space_state
+
+	var query = Physics2DShapeQueryParameters.new()
+	query.set_shape($CollisionShape2D.shape)
+	query.set_transform($CollisionShape2D.global_transform * Transform2D(0, VECTOR[dir]*tile_size))
+	query.set_margin(-1)
+	var array = world.intersect_shape(query)
+	
+	for result in array.size():
+		if array[result].collider.has_method("move"):
+			if array[result].collider.move(dir):
 				interpolate("position", position, position + VECTOR[dir] * tile_size)
 				return true
 			else:
 				return false
-	else:
-		interpolate("position", position, position + VECTOR[dir] * tile_size)
-		return true
+		else:
+			return false
+	
+	interpolate("position", position, position + VECTOR[dir] * tile_size)
+	return true
+
+
 
 func interpolate(property, initial, target):
 	movetween.interpolate_property(self, property, initial, target, .08, movetween.TRANS_SINE, movetween.EASE_OUT)
