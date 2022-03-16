@@ -5,7 +5,7 @@
 [ext_resource path="res://game/Spritesheet.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 16, 48 )
+extents = Vector2( 16, 64 )
 
 [node name="Car" type="KinematicBody2D" groups=["cars"]]
 script = ExtResource( 1 )
@@ -16,7 +16,7 @@ input_mode = 2
 region = Rect2( 32, 96, 32, 160 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 16, 48 )
+position = Vector2( 16, 64 )
 shape = SubResource( 1 )
 
 [node name="Tween" parent="." instance=ExtResource( 2 )]
