@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://game/Box.gd" type="Script" id=1]
 [ext_resource path="res://game/MovementTween.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game/Spritesheet.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 16 )
@@ -16,17 +17,10 @@ __meta__ = {
 position = Vector2( 16, 16 )
 shape = SubResource( 1 )
 
-[node name="Sprite" type="ColorRect" parent="."]
-margin_right = 32.0
-margin_bottom = 32.0
-color = Color( 0.854902, 0.682353, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2( 16, 16 )
-enabled = true
-cast_to = Vector2( 0, 32 )
-
 [node name="Tween" parent="." instance=ExtResource( 2 )]
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 16, 0 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 224, 192, 32, 64 )

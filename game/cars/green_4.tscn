@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://game/car.gd" type="Script" id=1]
+[ext_resource path="res://game/MovementTween.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game/Spritesheet.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 16, 48 )
+
+[node name="Car" type="KinematicBody2D" groups=["cars"]]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+input_mode = 2
+region = Rect2( 32, 96, 32, 160 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 16, 48 )
+shape = SubResource( 1 )
+
+[node name="Tween" parent="." instance=ExtResource( 2 )]
+
+[node name="Sprite" type="Node2D" parent="."]
+position = Vector2( 16, 128 )
+
+[node name="Sprite" type="Sprite" parent="Sprite"]
+position = Vector2( 0, -80 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 32, 96, 32, 160 )
+
+[node name="Tween" type="Tween" parent="Sprite"]
+
+[node name="Area2D" type="Area2D" parent="Sprite"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite/Area2D"]
+polygon = PoolVector2Array( -15, 0, -15, -138, 15, -138, 15, 0 )
+
+[node name="yTween" type="Tween" parent="Sprite"]
