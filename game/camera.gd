@@ -7,7 +7,6 @@ func _ready():
 
 func _process(delta):
 	var cars = get_tree().get_nodes_in_group("cars")
-	print(cars)
 	for i in cars:
 		if i.is_active: tracking = i
 	
