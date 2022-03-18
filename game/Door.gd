@@ -27,3 +27,7 @@ func _on_Button_update_door(open):
 			twn.start()
 
 
+
+
+func _on_Button2_update_door(open):
+	pass # Replace with function body.
