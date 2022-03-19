@@ -1,0 +1,38 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://game/TileMap.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game/cars/blue.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game/Exit.tscn" type="PackedScene" id=3]
+[ext_resource path="res://game/cars/red_4.tscn" type="PackedScene" id=4]
+[ext_resource path="res://game/Door.tscn" type="PackedScene" id=5]
+[ext_resource path="res://game/Button.tscn" type="PackedScene" id=6]
+[ext_resource path="res://game/Camera.tscn" type="PackedScene" id=7]
+
+[node name="Floor" type="Node2D"]
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="Button" parent="YSort" instance=ExtResource( 6 )]
+position = Vector2( 160, 64 )
+
+[node name="Door" parent="YSort" instance=ExtResource( 5 )]
+position = Vector2( 192, 0 )
+
+[node name="Car" parent="YSort" instance=ExtResource( 2 )]
+position = Vector2( -32, 64 )
+
+[node name="Car2" parent="YSort" instance=ExtResource( 4 )]
+
+[node name="Exit" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 384, 64 )
+
+[node name="Button2" parent="YSort" instance=ExtResource( 6 )]
+position = Vector2( 384, 0 )
+
+[node name="TileMap" parent="." instance=ExtResource( 1 )]
+tile_data = PoolIntArray( -196612, 0, 7, -196611, 0, 196612, -196610, 0, 196612, -196609, 0, 196612, -262144, 0, 196612, -262143, 0, 196612, -262142, 0, 196612, -262141, 0, 196612, -262140, 0, 196612, -262139, 0, 196612, -262138, 0, 196612, -262137, 0, 196612, -262136, 0, 196612, -262135, 0, 196612, -262134, 0, 196612, -262133, 0, 196612, -262132, 0, 196612, -262131, 0, 196612, -262130, 0, 196612, -262129, 0, 196612, -262128, 0, 196612, -262127, 0, 8, -131076, 0, 131076, -131075, 0, 131072, -131074, 0, 196613, -131073, 0, 196613, -196608, 0, 196613, -196607, 0, 196613, -196606, 0, 196613, -196605, 0, 196613, -196604, 0, 196613, -196603, 0, 196613, -196602, 0, 131074, -196601, 0, 196613, -196600, 0, 196613, -196599, 0, 196613, -196598, 0, 196613, -196597, 0, 196613, -196596, 0, 196613, -196595, 0, 196613, -196594, 0, 196613, -196593, 0, 196613, -196592, 0, 131073, -196591, 0, 131077, -65540, 0, 131076, -65539, 0, 131077, -131066, 0, 65538, -131056, 0, 131076, -131055, 0, 131077, -4, 0, 131076, -3, 0, 131077, -65530, 0, 6, -65520, 0, 131076, -65519, 0, 131077, 65532, 0, 131076, 65533, 0, 131077, 16, 0, 131076, 17, 0, 131077, 131068, 0, 131076, 131069, 0, 131077, 65542, 0, 65541, 65552, 0, 131076, 65553, 0, 131077, 196604, 0, 131076, 196605, 0, 131077, 131078, 0, 65538, 131088, 0, 131076, 131089, 0, 131077, 262140, 0, 131076, 262141, 0, 196608, 262142, 0, 196612, 262143, 0, 196612, 196608, 0, 196612, 196609, 0, 196612, 196610, 0, 196612, 196611, 0, 196612, 196612, 0, 196612, 196613, 0, 196612, 196614, 0, 131075, 196615, 0, 196612, 196616, 0, 196612, 196617, 0, 196612, 196618, 0, 196612, 196619, 0, 196612, 196620, 0, 196612, 196621, 0, 196612, 196622, 0, 196612, 196623, 0, 196612, 196624, 0, 196609, 196625, 0, 131077, 327676, 0, 65543, 327677, 0, 196613, 327678, 0, 196613, 327679, 0, 196613, 262144, 0, 196613, 262145, 0, 196613, 262146, 0, 196613, 262147, 0, 196613, 262148, 0, 196613, 262149, 0, 196613, 262150, 0, 196613, 262151, 0, 196613, 262152, 0, 196613, 262153, 0, 196613, 262154, 0, 196613, 262155, 0, 196613, 262156, 0, 196613, 262157, 0, 196613, 262158, 0, 196613, 262159, 0, 196613, 262160, 0, 196613, 262161, 0, 65544 )
+
+[node name="Camera" parent="." instance=ExtResource( 7 )]
+
+[connection signal="update_door" from="YSort/Button" to="YSort/Door" method="_on_Button_update_door"]
+[connection signal="update_door" from="YSort/Button2" to="YSort/Door" method="_on_Button_update_door"]

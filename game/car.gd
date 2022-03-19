@@ -61,3 +61,11 @@ func graphical_tween(x, y):
 	var ytwn = $Sprite/yTween
 	ytwn.interpolate_property($Sprite, y, 1.2, 1.0, .2, ytwn.TRANS_SINE, ytwn.EASE_OUT)
 	ytwn.start()
+
+func leave():
+	var twn = Tween.new()
+	add_child(twn)
+	twn.interpolate_property(sprite, "modulate", null, Color(1, 1, 1, 0), .25, twn.TRANS_SINE, twn.EASE_OUT)
+	twn.start()
+	yield(get_tree().create_timer(.25), "timeout")
+	queue_free()

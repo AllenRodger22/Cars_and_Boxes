@@ -1,6 +1,7 @@
 extends StaticBody2D
 
 var blocks := []
+var counter = 0
 var is_open = false
 
 func _ready():
@@ -8,6 +9,19 @@ func _ready():
 		blocks.insert(blocks.size(), get_child(child))
 
 func _on_Button_update_door(open):
+	if open:
+		counter += 1
+	else:
+		counter -= 1
+	
+	if counter > 0:
+		if not is_open:
+			update_status(true)
+	else:
+		if is_open:
+			update_status(false)
+
+func update_status(open):
 	if open:
 		is_open = true
 		for block in blocks:
@@ -26,8 +40,3 @@ func _on_Button_update_door(open):
 			twn.interpolate_property(sprite, "scale:y", null, 1, .5, twn.TRANS_SINE, twn.EASE_OUT)
 			twn.start()
 
-
-
-
-func _on_Button2_update_door(open):
-	pass # Replace with function body.
