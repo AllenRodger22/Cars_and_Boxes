@@ -18,10 +18,9 @@ func _ready():
 			break
 		elif not file.begins_with("."):
 			levels.append(file)
+	screen.play("Clear")
 	
 	dir.list_dir_end()
-	
-	reload_level()
 
 func load_next_level():
 	current_level += 1
