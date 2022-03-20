@@ -20,12 +20,10 @@ func _ready():
 			levels.append(file)
 	
 	dir.list_dir_end()
-	print(levels)
 	
 	reload_level()
 
 func load_next_level():
-	print(current_level)
 	current_level += 1
 	if current_level < levels.size():
 		screen.play("Close")

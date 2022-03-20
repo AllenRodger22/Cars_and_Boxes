@@ -12,7 +12,7 @@ const VECTOR := {
 
 onready var movetween = get_node("Tween")
 
-func move(dir):
+func move(dir, sfx):
 	var world = get_world_2d().direct_space_state
 
 	var query = Physics2DShapeQueryParameters.new()
@@ -24,8 +24,10 @@ func move(dir):
 	
 	for result in array.size():
 		if array[result].collider.has_method("move"):
-			if array[result].collider.move(dir):
+			if array[result].collider.move(dir, false):
 				interpolate("position", position, position + VECTOR[dir] * tile_size)
+				if sfx: 
+					$movesfx.pitch_scale = rand_range(.8, 1); $movesfx.play()
 				return true
 			else:
 				return false
@@ -33,6 +35,8 @@ func move(dir):
 			return false
 	
 	interpolate("position", position, position + VECTOR[dir] * tile_size)
+	if sfx: 
+		$movesfx.pitch_scale = rand_range(.8, 1); $movesfx.play()
 	return true
 
 

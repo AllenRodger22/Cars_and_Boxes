@@ -17,6 +17,7 @@ onready var sprite = $Sprite/Sprite
 func _ready():
 	sprite.set_region_rect(region)
 	$Sprite/Area2D.connect("input_event", self, "_input_event")
+	
 
 func _unhandled_input(event):
 	if is_active:
@@ -25,7 +26,7 @@ func _unhandled_input(event):
 				0:
 					for dir in VECTOR.keys():
 						if event.is_action_pressed(dir):
-							move(dir)
+							move(dir, true)
 							sprite.set_region_rect(Rect2(region.position.x + sheetnumbers[dir], region.position.y, region.size.x, region.size.y))
 							if dir == "right" or dir == "left":
 								graphical_tween("scale:y", "scale:x")
@@ -34,12 +35,12 @@ func _unhandled_input(event):
 				1:
 					for dir in {"right": Vector2.RIGHT,"left": Vector2.LEFT}.keys():
 						if event.is_action_pressed(dir):
-							move(dir)
+							move(dir, true)
 							graphical_tween("scale:y", "scale:x")
 				2:
 					for dir in {"up": Vector2.UP,"down": Vector2.DOWN}.keys():
 						if event.is_action_pressed(dir):
-							move(dir)
+							move(dir, true)
 							graphical_tween("scale:x", "scale:y")
 		
 		if event.is_action_released("retry"):
@@ -47,12 +48,15 @@ func _unhandled_input(event):
 
 func _input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT:
-		get_tree().call_group("cars", "deactivate")
-		set_deferred("is_active", true)
-		
-		var twn = $Sprite/Tween
-		twn.interpolate_property($Sprite, "scale:y", 0.5, 1.0, 1.0, twn.TRANS_ELASTIC, twn.EASE_OUT)
-		twn.start()
+		if not is_active:
+			get_tree().call_group("cars", "deactivate")
+			set_deferred("is_active", true)
+			
+			$clicksfx.volume_db = -20; $clicksfx.play()
+			
+			var twn = $Sprite/Tween
+			twn.interpolate_property($Sprite, "scale:y", 0.5, 1.0, 1.0, twn.TRANS_ELASTIC, twn.EASE_OUT)
+			twn.start()
 
 func deactivate():
 	is_active = false
@@ -66,6 +70,9 @@ func graphical_tween(x, y):
 	ytwn.start()
 
 func leave():
+	is_active = false
+	$CollisionShape2D.set_deferred("disabled", true)
+	
 	var twn = Tween.new()
 	add_child(twn)
 	twn.interpolate_property(sprite, "modulate", null, Color(1, 1, 1, 0), .25, twn.TRANS_SINE, twn.EASE_OUT)
