@@ -41,6 +41,9 @@ func _unhandled_input(event):
 						if event.is_action_pressed(dir):
 							move(dir)
 							graphical_tween("scale:x", "scale:y")
+		
+		if event.is_action_released("retry"):
+			LevelLoad.reload_level()
 
 func _input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT:
